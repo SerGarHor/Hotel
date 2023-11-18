@@ -1,0 +1,45 @@
+<div class="dialog-style">
+    <mat-toolbar color="primary">
+            <mat-icon (click)="close()">arrow_back</mat-icon>
+            <span>{{title}}</span>
+    </mat-toolbar>
+
+    <div  [formGroup]="form">
+        <mat-form-field class="input-style">
+            <input type="number" placeholder="Id del hotel" matInput [formControlName]="formField.id">
+        </mat-form-field> 
+    
+        <mat-form-field class="input-style">
+            <input type="string" placeholder="Nombre del hotel" matInput [formControlName]="formField.name_hotel">
+        </mat-form-field> 
+        
+        <mat-form-field class="input-style">
+                <input type="string" placeholder="Dirección del hotel" matInput [formControlName]="formField.addres_hotel">
+        </mat-form-field> 
+
+        <mat-form-field class="input-style">
+            <input type="string" placeholder="Pais" matInput [formControlName]="formField.country">
+        </mat-form-field> 
+
+        <mat-form-field class="input-style">
+            <input type="string" placeholder="Descripción" matInput [formControlName]="formField.description_hotel">
+        </mat-form-field> 
+
+        <mat-form-field class="input-style">
+            <input type="string" placeholder="Numero de telefono" matInput [formControlName]="formField.phone_number">
+        </mat-form-field> 
+
+        <mat-form-field class="input-style">
+            <input type="string" placeholder="Email" matInput [formControlName]="formField.email">
+        </mat-form-field> 
+
+        <mat-form-field  class="input-style">
+            <input type="string" placeholder="Imagen"  matInput [formControlName]="formField.img">
+        </mat-form-field> 
+
+        <mat-form-field class="input-style">
+            <input type="number" placeholder="Calificación" matInput [formControlName]="formField.stars">
+        </mat-form-field> 
+    </div>
+    <button (click)="save()" mat-raised-button color="primary"> Guardar </button>
+</div>

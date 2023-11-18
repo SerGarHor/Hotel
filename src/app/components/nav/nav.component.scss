@@ -1,0 +1,29 @@
+
+.nav-style{
+    width: 100%;
+    height: 15vh;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+button{
+    margin-top: 2rem;
+}
+.filtro-input {
+    margin-top: 2rem;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    margin-right: 10px;
+    transition: border-color 0.3s;
+}
+
+.filtro-input:focus {
+    border-color: #7b1fa2;
+    outline: none;
+}
+
+.filtro-btn:hover {
+    background-color: #7b1fa2;
+}

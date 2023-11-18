@@ -1,0 +1,31 @@
+.hotel-style{
+    width: 100%;
+    height: 100%;
+    background-color: #7b1fa2;
+}
+
+.example-card {
+    max-width: 400px;
+    border-color: #69f0ae;
+    background-color: #69f0ae;
+  }
+
+
+.grid-hotel-style{
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    grid-template-rows: 100%;
+    gap: 20px;
+}
+
+.button-actions{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+p{
+    font-size: 1rem;
+    margin-top: 0.4rem;
+}

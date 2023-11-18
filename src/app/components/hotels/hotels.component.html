@@ -1,0 +1,24 @@
+<div class="hotel-style">
+    <div class="grid-hotel-style" >
+        <mat-card *ngFor="let hotel of listHotels; index as i;" class="example-card">
+          <mat-card-header>
+            <mat-card-title>{{hotel.name_hotel}}</mat-card-title>
+            <mat-card-title>
+              Calificación: {{hotel.stars}} 
+              <span class="material-symbols-outlined">
+              hotel_class
+              </span></mat-card-title>
+          </mat-card-header>
+          <img mat-card-image src="../../../assets/img/hotel-1.jpg" alt="Photo of a Shiba Inu">
+          <mat-card-content>
+            <p>
+              {{hotel.description_hotel}}
+            </p>
+          </mat-card-content>
+          <mat-card-actions class="button-actions">
+              <button mat-raised-button color="primary"  (click)="updateHotel(hotel)" mat-button>Editar</button>
+              <button mat-raised-button color="warn" (click)="deleteHotel(hotel)" mat-button>Eliminar</button>
+          </mat-card-actions>
+        </mat-card>
+    </div>
+</div>
