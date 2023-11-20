@@ -1,6 +1,7 @@
-<div class="hotel-style">
+<app-spinner *ngIf="isLoading"></app-spinner>
+<div *ngIf="!isLoading" class="hotel-style">
     <div class="grid-hotel-style" >
-        <mat-card *ngFor="let hotel of listHotels; index as i;" class="example-card">
+        <mat-card *ngFor="let hotel of listHotels; index as i;" class="card-style">
           <mat-card-header>
             <mat-card-title>{{hotel.name_hotel}}</mat-card-title>
             <mat-card-title>

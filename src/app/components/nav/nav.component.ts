@@ -3,6 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { Hotel } from 'src/app/models/hotels.interface';
 import { DialogHotelComponent } from '../dialog-hotel/dialog-hotel.component';
 import { HotelService } from 'src/app/services/hotel.service';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -14,7 +16,9 @@ export class NavComponent {
 
   constructor(
     public dialog: MatDialog,
-    private service: HotelService
+    private service: HotelService,
+    private location: Location,
+    private router: Router
   ){
     
   }
@@ -29,14 +33,16 @@ export class NavComponent {
     })
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      if(result){
+        this.router.navigateByUrl('/home').then(() => {
+          this.router.navigate([this.router.url]);
+        });
+      }
     });
   }
 
   filtrar(){
-    this.service.getFilter(this.filtro).subscribe(res =>{
-      console.log('res',res)
-    })
+    this.service.getFilter(this.filtro)
   }
 
 }

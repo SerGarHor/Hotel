@@ -23,6 +23,13 @@ export class HotelsComponent {
   ) { }
 
   ngOnInit() {
+    this.loadData()
+    this.service.data$.subscribe((nuevosDatos) => {
+      this.listHotels = nuevosDatos;
+    });
+  }
+
+  loadData(){
     this.isLoading = true
     this.service.getAllHotels().subscribe({
       next: (res: Hotel[]) => {
@@ -30,13 +37,13 @@ export class HotelsComponent {
           this.listHotels = res
           this.isLoading = false
         } else {
-          console.log('La respuesta está vacía o no contiene hoteles.');
         }
       },
       error: (error) => {
         console.error('Error al obtener datos:', error);
       }
     });
+
   }
 
   updateHotel(hotel: Hotel) {
@@ -51,6 +58,9 @@ export class HotelsComponent {
     })
 
     dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        this.loadData()
+      }
 
     });
   }
@@ -64,6 +74,12 @@ export class HotelsComponent {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.service.deleteHotel(hotel.id).subscribe(res => {
+          if(res){
+            this.snack.open('Eliminado con exito!', 'x');
+            this.loadData()
+        } else {
+          this.snack.open('Hubo un error eliminando', 'x');
+        }
         });
       }
     });

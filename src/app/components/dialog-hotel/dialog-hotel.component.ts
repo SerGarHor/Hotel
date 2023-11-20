@@ -42,9 +42,6 @@ export class DialogHotelComponent implements OnInit {
     this.title = data.title
     this.fullData = data.fullData
     this.isUpdate = data.isUpdate
-    console.log('fullData',this.fullData)
-    console.log('isUpdate',this.isUpdate)
-    console.log('fullDatitleta',this.title)
   }
 
   ngOnInit(): void {
@@ -82,14 +79,21 @@ export class DialogHotelComponent implements OnInit {
     let data = this.form.getRawValue()
     if(data.id == null){
       this.service.createHotel(data).subscribe(res => {
-        console.log('res',res)
         if(res){
             this.snack.open('Guardado con exito!', 'x');
+            this.dialogRef.close(true)
+        } else {
+          this.snack.open('Hubo un error creando', 'x');
         }
       });
     } else {
       this.service.updateHotel(data).subscribe(res => {
-        
+        if(res){
+          this.snack.open('Actualizado con exito!', 'x');
+          this.dialogRef.close(true)
+      } else {
+        this.snack.open('Hubo un error actualizando', 'x');
+      }
       })
     }
   }

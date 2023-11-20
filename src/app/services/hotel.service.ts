@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Hotel, HotelFormEnum } from '../models/hotels.interface';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HotelService {
   private url = 'https://localhost:7019/api/';
+  private dataSubject = new BehaviorSubject<Hotel[]>([]);
+  data$ = this.dataSubject.asObservable();
 
   constructor(
     private http: HttpClient,
@@ -20,7 +22,9 @@ export class HotelService {
   }
 
   getFilter(filter: string) {
-    return this.http.get<Hotel[]>(`${this.url}Hotels/${filter}`);
+    this.http.get<Hotel[]>(`${this.url}Hotels/${filter}`).subscribe(res => {
+      this.dataSubject.next(res)
+    })
   }
 
   createHotel(hotel: Hotel): Observable<any> {
@@ -28,7 +32,6 @@ export class HotelService {
 }
 
 updateHotel(hotel: Hotel): Observable<any> {
-  console.log('hotel', hotel)
     return this.http.put(`${this.url}Hotels`, hotel)
 }
 

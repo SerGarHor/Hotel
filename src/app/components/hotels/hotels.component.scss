@@ -1,21 +1,18 @@
 .hotel-style{
     width: 100%;
-    height: 100%;
     background-color: #7b1fa2;
+    overflow: auto;
+    height: 100%;
 }
 
-.example-card {
-    max-width: 400px;
-    border-color: #69f0ae;
-    background-color: #69f0ae;
-  }
+
 
 
 .grid-hotel-style{
     padding: 2rem;
     display: grid;
     grid-template-columns: 30% 30% 30%;
-    grid-template-rows: 100%;
+    grid-template-rows: 65%;
     gap: 20px;
 }
 
@@ -28,4 +25,47 @@
 p{
     font-size: 1rem;
     margin-top: 0.4rem;
+}
+
+.card-style {
+    border-color: #69f0ae;
+    background-color: #69f0ae;
+    height: 100%;
+  }
+
+
+@media screen and (min-width: 360px) {
+
+    .grid-hotel-style{
+        padding: 2rem;
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 28%;
+    }
+
+
+}
+
+@media screen and (min-width: 768px) {
+    
+    .grid-hotel-style{
+        padding: 2rem;
+        display: grid;
+        grid-template-columns: 40% 40%;
+        grid-template-rows: 50%;
+        gap: 5%;
+        height: 100%;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+
+    .grid-hotel-style{
+        padding: 2rem;
+        display: grid;
+        grid-template-columns: 30% 30% 30%;
+        grid-template-rows: 60%;
+        gap: 5%;
+        height: 100%;
+    }
 }
